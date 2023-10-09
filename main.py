@@ -2,6 +2,7 @@ import random
 h = 20
 d = 1
 dificulty = 1
+critchance = 5
 
 inv = []
 def playeraddinventory():
