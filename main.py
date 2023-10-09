@@ -126,3 +126,104 @@ print("health: " + str(h) + " damage: " + str(d)+" difficulty: " + str(dificulty
 
 #check inv for weapons that give perks
 #add battles/quests that are randomly selected from dificulty ratings
+
+
+
+
+
+
+
+
+import random
+
+h = 20
+d = 1
+difficulty = 1
+crit_chance = 5
+crit_damage = 1.5
+
+inv = []
+
+def q1d1():
+    global h
+    global d
+
+    wh = 5
+    wd = 1
+    wc = 1.5
+    ran1 = random.random()
+
+    print("You encounter a Wolf (♥5) (⚔︎0.5) | You have (" + str(h) + "♥) (" + str(d) + "⚔︎)")
+    wolf(wh)
+
+def wolf(wh):
+    global h
+    global d
+    q1ran1 = random.randint(1, 100)
+    q1ran2 = random.randint(1, 100)
+
+    q1q1d2 = input("Run or Fight?: ")
+    q1q1d2 = q1q1d2.lower()
+
+    if q1q1d2 == "run":
+        print("You chose to run.")
+        pass
+
+    elif q1q1d2 == "fight":
+        if q1ran1 < crit_chance:
+            wh -= crit_damage
+            print("Your attack was super effective! You damaged the wolf for " + str(crit_damage) + "♥")
+            if int(wh) <= 0:
+                print("You have killed the wolf")
+                pass
+        if q1ran1 > crit_chance:
+            wh -= d
+            print("You damaged the wolf for 1♥")
+            if int(wh) <= 0:
+                print("You have killed the wolf")
+                pass
+        if q1ran2 > 90:
+            h -= 1.5
+            print("The Wolf damaged you for 1.5♥")
+            if h <= 0:
+                print("Game over. Your health reached 0 or below.")
+                end_game()
+        if q1ran2 < 90:
+            h -= 1
+            print("The Wolf damaged you for 1♥")
+            if h <= 0:
+                print("Game over. Your health reached 0 or below.")
+                end_game()
+
+            wolf(wh)
+
+    else:
+        print("Not a valid input")
+        q1d1()
+
+    print("test")
+    if d > wd:
+        inv.append("Bone Sword (+0.5⚔︎)")
+        d += 0.5
+        print("You won the fight and earned (1x Bone Sword(+0.5⚔︎))")
+        pass
+    elif d < wd:
+        h -= q1ran1
+        print("You lost the fight and lost " + str(q1ran1) + "♥")
+        pass
+    elif d == wd:
+        if ran1 > 0.5:
+            inv.append("Bone Sword(+0.5⚔︎)")
+            d += 0.5
+            print("You won the fight and earned (1x Bone Sword(+0.5⚔︎))")
+            pass
+        elif ran1 < 0.5:
+            h -= q1ran1
+            print("You lost the fight and lost " + str(q1ran1) + "♥")
+            pass
+
+def end_game():
+    print("Game over.")
+
+q1d1()
+
