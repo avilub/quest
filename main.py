@@ -3,6 +3,7 @@ h = 20
 d = 1
 dificulty = 1
 critchance = 5
+critdamage = 1.5
 
 inv = []
 def playeraddinventory():
