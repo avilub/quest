@@ -136,14 +136,12 @@ print("health: " + str(h) + " damage: " + str(d)+" difficulty: " + str(dificulty
 
 
 
-
-
 import random
+import time
 
 h = 20
 d = 1
 difficulty = 1
-crit_chance = 5
 crit_damage = 1.5
 wh = 5
 wd = 1
@@ -163,41 +161,64 @@ def wolf():
     global wh
     global wd
     global wc
-    ran1 = random.random()
-    q1ran1 = random.randint(1, 100)
-    q1ran2 = random.randint(1, 100)
 
-    q1q1d2 = input("Run or Fight?: ")
-    q1q1d2 = q1q1d2.lower()
+    while wh > 0:
+        ran1 = random.randint(1, 101)
+        q1ran1 = random.randint(1, 101)
+        time.sleep(0.1)
+        print("You: " + str(h) + "♥ " + "Wolf: " + str(wh) + "♥")
+        qthing = input("Run or Fight?: ")
+        qthing = qthing.lower()
 
-    if q1q1d2 == "run":
-        print("You chose to run.")
-        pass
+        if qthing == "run":
+            print("You escape with " + str(h) + "♥")
+            break
+        elif qthing == "fight":
+            time.sleep (0.5)
 
-    elif q1q1d2 == "fight":
-        wh = wh - d
-        print("the wolf counters")
-        print("-" + str(wd) + "♥")
-        h = h - wd
-        while h > wh:
-            print(str(wh) + "♥ " + str(h) + "♥")
-            qthing = input("Run or Fight?: ")
-            qthing = q1q1d2.lower()
-            if qthing == "run":
-                next()
-            if qthing == "fight":
+            if int(ran1) >= 10:
+                print("You damage the wolf for " + str(d) + "♥")
                 wh = wh - d
-                print("the wolf counters")
-                print("-" + str(wd))
-                h = h - wd
-            else:
-                print("not valid")
-            if int(wh) <= 0:
-                print("you win")
-                break
+                time.sleep(1)
+
+                if int(q1ran1) >= 10:
+                    print("The wolf counters and damages you for " + str(wd) + "♥")
+                    h = h - wd
+                elif int(q1ran1) < 10:
+                    print("The wolf counters effectively and damages you for " + str(wc) + "♥")
+                    h = h - wc
+
+            elif int(ran1) < 10:
+                print("You make a critical hit on the wolf for " + str(crit_damage) + "♥")
+                wh = wh - crit_damage
+                time.sleep(1)
+
+                if int(q1ran1) >= 10:
+                    print("The wolf counters and damages you for " + str(wd) + "♥")
+                    h = h - wd
+                elif int(q1ran1) < 10:
+                    print("The wolf counters effectively and damages you for " + str(wc) + "♥")
+                    h = h - wc
+
+
+
+        else:
+            print("not valid")
+            wolf()
+
+        if int(wh) == 0:
+            print("you win")
+            break
+        if h <= 0:
+            end_game()
+    else:
+        print("not a valid input")
+        q1d1()
 
 def end_game():
     print("Game over.")
+    exit()
+
 def next():
     print("next quest")
     pass
