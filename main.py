@@ -37,26 +37,11 @@ def q1d1():
         pass
 
     elif q1q1d2 == "fight":
-        print("test")
-        if d > wd:
-            inv.append("Bone Sword (+0.5⚔︎)")
-            d = d + 0.5
-            print("You won the fight and earned (1x Bone Sword(+0.5⚔︎))")
-            pass
-        elif d < wd:
-            h = h - q1ran1
-            print("You lost the fight and lost " + str(q1ran1) + "♥")
-            pass
-        elif d == wd:
-            if ran1 > 0.5:
-                inv.append("Bone Sword(+0.5⚔︎)")
-                d = d + 0.5
-                print("You won the fight and earned (1x Bone Sword(+0.5⚔︎))")
-                pass
-            elif ran1 < 0.5:
-                h = h - q1ran1
-                print("You lost the fight and lost "+str(q1ran1)+"♥")
-                pass
+
+
+
+
+    
     else:
         print("not a valid input")
         q1d1()
