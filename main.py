@@ -11,15 +11,6 @@ wc = 1.5
 
 inv = []
 
-def q1d1():
-    global h
-    global d
-    wh = 5
-    wd = 0.5
-
-
-    print("You encounter a Wolf (" + str(wh) + "♥) (" + str(d) + "⚔︎)""| You have (" + str(h) + "♥) (" + str(d) + "⚔︎)")
-    wolf()
 
 def wolf():
     global h
@@ -86,8 +77,8 @@ def end_game():
     print("Game over.")
     exit()
 
-def next():
-    print("next quest")
-    pass
+print("You encounter a Wolf")
+time.sleep(0.1)
+wolf()
 q1d1()
-next()
+print("idk")
